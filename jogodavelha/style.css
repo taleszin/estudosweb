@@ -1,0 +1,52 @@
+body {
+    background-color: rgb(31, 119, 201);
+    font: normal 15pt Arial;
+  }
+  
+  header {
+    color: white;
+    text-align: center;
+  }
+  
+  div {
+    text-align: center;
+    padding: 5px;
+  }
+  
+  section {
+    background: white;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: auto;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.418);
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  footer {
+    color: white;
+    text-align: center;
+    font-style: italic;
+  }
+  
+  tr {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  table {
+    display: inline-block;
+    margin: auto;
+  }
+  
+  .table-wrapper {
+    display: inline-block;
+    max-width: 100%;
+  }
+  
