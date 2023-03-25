@@ -27,6 +27,9 @@ function clicar(index) {
   if (jogoAcabou || tabuleiro[index] !== "") {
     return;
   }
+  if(jogadaMaquina){
+    jogadorAtual = "X"
+  }
 
   celulas[index].innerHTML = jogadorAtual;
   tabuleiro[index] = jogadorAtual;
@@ -64,7 +67,7 @@ function jogadaMaquina() {
 
   if (verificarVitoria()) {
     setTimeout(() => {
-      alert(`Jogador ${jogadorAtual} venceu!`);
+      alert(`A máquina venceu !`);
       exibirConfirm();
     }, 100);
   } else if (verificarEmpate()) {
@@ -73,8 +76,6 @@ function jogadaMaquina() {
       exibirConfirm();
     }, 100);
   }
-
-  jogadorAtual = "X";
 }
 
 // Função de avaliação do estado do jogo
@@ -126,30 +127,6 @@ function verificarVitoria() {
 }
 
 
-
-
-// Função para verificar se há um vencedor
-function verificarVitoria() {
-  const combinacoesVitoria = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
-
-  for (let i = 0; i < combinacoesVitoria.length; i++) {
-    const [a, b, c] = combinacoesVitoria[i];
-    if (tabuleiro[a] && tabuleiro[a] === tabuleiro[b] && tabuleiro[a] === tabuleiro[c]) {
-      return true;
-    }
-  }
-
-  return false;
-}
 
 // Função para verificar se houve empate
 function verificarEmpate() {
