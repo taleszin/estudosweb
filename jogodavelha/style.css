@@ -1,6 +1,9 @@
 body {
     background-color: rgb(31, 119, 201);
     font: normal 15pt Arial;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
   
   header {
@@ -19,25 +22,26 @@ body {
     padding: 0.5rem;
     margin: auto;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.418);
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: auto;
+    width: 30%;
+    height: 30vh;
   }
   
   footer {
     color: white;
     text-align: center;
     font-style: italic;
+    margin-top: 0;
   }
   
   tr {
     cursor: pointer;
     user-select: none;
+    color:red;
   }
   
   table {
@@ -46,7 +50,9 @@ body {
   }
   
   .table-wrapper {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 100%;
   }
   
