@@ -27,7 +27,7 @@ function clicar(index) {
   if (jogoAcabou || tabuleiro[index] !== "") {
     return;
   }
-  if(jogadaMaquina){
+  if(modoDeJogo == 2){
     jogadorAtual = "X"
   }
 
