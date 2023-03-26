@@ -13,6 +13,7 @@ if (modoDeJogo === "1") {
 } else if (modoDeJogo === "2") {
   // Modo de jogo para jogar contra a máquina
   alert("Você escolheu jogar contra a máquina. Boa sorte!");
+  jogadorAtual = "X"
   jogadaMaquina();
 } else {
   // Modo de jogo inválido
@@ -26,9 +27,6 @@ celulas.forEach((celula, index) => celula.addEventListener("click", () => clicar
 function clicar(index) {
   if (jogoAcabou || tabuleiro[index] !== "") {
     return;
-  }
-  if(modoDeJogo == 2){
-    jogadorAtual = "X"
   }
 
   celulas[index].innerHTML = jogadorAtual;
@@ -48,11 +46,13 @@ function clicar(index) {
     }, 100);
   }
 
-  jogadorAtual = jogadorAtual === "X" ? "O" : "X";
-  
   if (modoDeJogo === "2" && !jogoAcabou) {
-    // Se o modo de jogo é contra a máquina, chama jogadaMaquina() após a jogada do jogador humano
-    jogadaMaquina();
+    jogadorAtual = "O";
+    setTimeout(() => {
+      jogadaMaquina();
+    }, 200);
+  } else {
+    jogadorAtual = jogadorAtual === "X" ? "O" : "X";
   }
 }
 
@@ -62,7 +62,6 @@ function jogadaMaquina() {
   const jogada = minimax(tabuleiro, "O").indice;
   celulas[jogada].innerHTML = "O";
   tabuleiro[jogada] = "O";
-
   jogoAcabou = verificarVitoria() || verificarEmpate();
 
   if (verificarVitoria()) {
@@ -76,6 +75,8 @@ function jogadaMaquina() {
       exibirConfirm();
     }, 100);
   }
+
+  jogadorAtual = "X";
 }
 
 // Função de avaliação do estado do jogo
