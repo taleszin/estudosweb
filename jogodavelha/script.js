@@ -50,16 +50,25 @@ function clicar(index) {
     jogadorAtual = "O";
     setTimeout(() => {
       jogadaMaquina();
-    }, 200);
+    }, 250);
   } else {
     jogadorAtual = jogadorAtual === "X" ? "O" : "X";
   }
 }
 
+// Função para fazer a jogada da máquina aleatória
+function jogadaAleatoria() {
+  let indice = Math.floor(Math.random() * 9);
+  while (tabuleiro[indice] !== "") {
+    indice = Math.floor(Math.random() * 9);
+  }
+  return indice;
+}
+
 // Função para fazer a jogada da máquina
 function jogadaMaquina() {
-  // Chamada da função minimax
-  const jogada = minimax(tabuleiro, "O").indice;
+  // Chamada da função jogadaAleatoria
+  const jogada = jogadaAleatoria();
   celulas[jogada].innerHTML = "O";
   tabuleiro[jogada] = "O";
   jogoAcabou = verificarVitoria() || verificarEmpate();
@@ -134,7 +143,7 @@ function verificarEmpate() {
   return tabuleiro.every(celula => celula !== "");
 }
 
-// Função para exibir o confirm
+// Função para perguntar se o jogador deseja replay
 function exibirConfirm() {
   const jogarNovamente = confirm("Deseja jogar novamente?");
   if (jogarNovamente) {
@@ -150,7 +159,7 @@ const tableWrapper = document.querySelector(".table-wrapper");
 tableWrapper.style.marginTop = `${(section.offsetHeight - tableWrapper.offsetHeight) / 2}px`;
 
 //função que o chatgpt deu pra ser a inteligência da máquina
-function minimax(novoTabuleiro, jogador) {
+/*function minimax(novoTabuleiro, jogador) {
   // Verificar se o estado atual é um estado final (ou seja, se alguém ganhou ou se deu empate)
   if (verificarVitoria(novoTabuleiro, "X")) {
     return { valor: -10 };
@@ -208,4 +217,4 @@ melhorJogada = i;
 
 // Retornar a jogada escolhida com seu índice e valor
 return jogadas[melhorJogada];
-}
+} */ 
